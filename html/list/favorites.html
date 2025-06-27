@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teams List</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/views/favorites.css">
+    <link rel="stylesheet" href="../../css/partials/footer.css">
+    <link rel="stylesheet" href="../../css/partials/header.css">
+    <link rel="manifest" href="../../manifest.json">
+</head>
+<body>
+    <header>
+        <h1 class="page-title"><strong>CHAMPIONS</strong><p>.dle</p></h1>
+    </header>
+    <nav>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../games.html">Games</a></li>
+        <li><a href="team-List.html">List</a></li>
+        <li><a href="favorites.html">Favorites</a></li>
+    </nav>
+
+    <main>
+        <h2 class="game-title">Favorites players</h2>
+        <div id="favorites-list"></div>
+        <script src="../../js/favorites.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const container = document.getElementById('favorites-list');
+        if (favorites.length === 0) {
+            container.innerHTML = '<p class="not-favs-text">No tienes jugadores favoritos aún.</p>';
+        } else {
+            container.innerHTML = favorites.map(player =>
+            `<div class="player-card">
+                <img src="https://images.fotmob.com/image_resources/playerimages/${player.id}.png" alt="${player.name}" class="favorite-img">
+                <h3>${player.name}</h3>
+                <button class="fav-btn" onclick="removeFromFavorites('${player.id}');location.reload();">💔</button>
+            </div>`
+            ).join('');
+        }
+        });
+        </script>
+    </main>
+
+    <footer>
+        <p class="footer-text">© 2025 Championdle. All rights reserved.</p>
+        <p class="footer-text">Developed by <a href="https://www.github.com/AlejoMFernandez" target="_blank">Alejo Fernandez</a></p>
+    </footer>
+</body>
+<!-- <script src="index.js"></script> -->
+<script src="../../js/teamList.js"></script>
+</html>

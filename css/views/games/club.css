@@ -1,0 +1,95 @@
+        .club-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .club-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            background: #23272b;
+        }
+        .players-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px 18px; /* filas x columnas */
+            margin-bottom: 24px;
+        }
+
+        .player-option {
+            padding: 12px 18px;
+            border-radius: 8px;
+            background: #23272b;
+            color: #fff;
+            border: 1px solid #505961;
+            cursor: pointer;
+            font-size: 1.08rem;
+            transition: background 0.2s, border 0.2s, color 0.2s;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .player-option.selected {
+            border: 2px solid #b38838;
+            background: #2d3238;
+        }
+        .player-option.correct {
+            background: #1de9b6;
+            color: #23272b;
+            border: 2px solid #1de9b6;
+        }
+        .player-option.incorrect {
+            background: #ff5252;
+            color: #fff;
+            border: 2px solid #ff5252;
+        }
+        .player-option.missed {
+            background: #888;
+            color: #fff;
+            border: 2px solid #888;
+        }
+        #submit-btn {
+            padding: 12px 32px;
+            border-radius: 8px;
+            background: #b38838;
+            color: #fff;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 12px;
+            transition: background 0.2s;
+        }
+        #submit-btn:disabled {
+            opacity: 0.7;
+            cursor: default;
+        }
+        #result {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        #restart-btn {
+            display: none;
+            margin-top: 10px;
+            background: #1de9b6;
+            color: #23272b;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 28px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        #restart-btn:hover {
+            background: #b38838;
+            color: #fff;
+        }

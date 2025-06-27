@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --color-bg: #101820;         /* Fondo principal oscuro */
+  --color-surface: #1a2636;    /* Superficies y tarjetas */
+  --color-surface2:rgb(24, 78, 148)6;    /* Superficies y tarjetas */
+  --color-primary: #1976d2;    /* Azul principal */
+  --color-primary2:rgb(20, 69, 119)2;    /* Azul principal */
+  --color-secondary: #00b4d8;  /* Celeste vibrante */
+  --color-accent: #48cae4;     /* Celeste claro/acento */
+  --color-highlight: #90e0ef;  /* Detalles y hover */
+  --color-text: #e0e6ed;       /* Texto principal */
+  --color-muted: #7b8fa1;      /* Texto secundario */
+  --color-error: #ff4d6d;      /* Errores */
+  --color-success: #38b000;    /* Éxitos */
+}
+
+html, body{
+    min-height: 100%;
+    background-color: var(--color-bg);
+}
+
+main{
+    min-height: 80dvh;
+}
+
+.game-title{
+    text-align: center;
+    padding: 50px 0px 20px 0px;
+    font-size: 30px;
+    letter-spacing: -1px;
+    color: #e6e6e6;
+    font-weight: 500;
+}
+
+.page-subtitle{
+    text-align: center;
+    font-size: 30px;
+    color: #2c36a1;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 50px 0px 0px 0px;
+}
+
+.backbutton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 20px 0 0 20px;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #0c0d0e;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.backbutton:hover {
+    background: #23272b;
+}
+

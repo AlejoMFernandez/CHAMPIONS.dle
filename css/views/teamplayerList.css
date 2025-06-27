@@ -1,0 +1,146 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background: #18191a;
+}
+
+#player-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:30px;
+    margin: 50px 20px;
+}
+
+.team-header {
+    text-align: center;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+.team-header h2 {
+    font-size: 2rem;
+}
+
+.team-header img {
+    margin-top: 10px;
+    border-radius: 10px;
+    width: 80px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    justify-items: start;
+    align-items: flex-start;
+    margin: 0 auto;
+    max-width: 1100px;
+}
+
+.team-col-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #23272b;
+    border-radius: 12px;
+    padding: 25px 20px 20px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    min-width: 200px;
+}
+
+.team-logo {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background: #18191a;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    padding: 10px;
+}
+
+.coach-section {
+    width: 100%;
+    margin-top: 10px;
+    background: #18191a;
+    border-radius: 8px;
+    padding: 15px 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.coach-section h3 {
+    color: #b38838;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #444950;
+    padding-bottom: 4px;
+}
+
+.coach-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #f0f2f5;
+    font-size: 1rem;
+}
+
+.player-section {
+    background: #23272b;
+    border-radius: 12px;
+    padding: 20px 15px 15px 15px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    min-width: 200px;
+}
+
+.player-section h3 {
+    color: #b38838;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #444950;
+    padding-bottom: 4px;
+}
+
+.player-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.player-list li {
+    background: #18191a;
+    color: #f0f2f5;
+    margin-bottom: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.player-list li:hover {
+    background: #2d3238;
+    color: #b38838;
+}
+
+.fav-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 2em;
+    margin-left: 10px;
+    transform: translateX(7px);
+}

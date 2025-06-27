@@ -1,0 +1,34 @@
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.option-btn {
+    padding: 14px 18px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: none;
+    background: #171a1d;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+}
+
+.option-btn.correct {
+    background: #1de9b6;
+    color: #23272b;
+}
+
+.option-btn.incorrect {
+    background: #ff5252;
+    color: #fff;
+}
+
+.option-btn:disabled {
+    opacity: 0.8;
+    cursor: default;
+}

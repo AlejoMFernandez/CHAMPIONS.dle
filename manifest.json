@@ -1,0 +1,33 @@
+{
+    "theme_color": "#18191a",
+    "background_color": "#18191a",
+    "display": "fullscreen",
+    "scope": "/FernandezAlejo-ParcialN1/",
+    "start_url": "index.html",
+    "name": "Champions League APP",
+    "short_name": "CL App",
+    "description": "Champions League Games",
+    "icons": [
+        {
+            "src": "img/icon1.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+
+        },
+        {
+            "src": "img/icon2.png",
+            "sizes": "320x320",
+            "type": "image/png",
+            "purpose": "any"
+
+        },
+        {
+            "src": "img/icon3.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+
+        }
+    ]
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Championdle 2025</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/list/main.css">
+    <link rel="stylesheet" href="../css/views/games.css">
+    <link rel="stylesheet" href="../css/partials/header.css">
+    <link rel="stylesheet" href="../css/partials/footer.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="../img/icon.png">
+</head>
+<body>
+    <header>
+        <h1 class="page-title"><strong>CHAMPIONS</strong><p>.dle</p></h1>
+    </header>
+    <nav>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="list/team-List.html">List</a></li>
+        <li><a href="list/favorites.html">Favorites</a></li>
+    </nav>
+
+    <main>
+        <div>
+            <h3 class="page-subtitle">GAMES</h3>
+        </div>
+        <div id="games-container">
+            <a class="game-card-link" href="games/guess.html">
+                <div class="game-card">
+                    <div class="img-container">
+                        <img src="../img/game-guess.png" alt="Game" class="game-img">
+                    </div>            
+                    <div class="game-card-footer">
+                        <span class="play-text">PLAY</span>
+                        <span class="game-container-title">Guess the footballer</span>
+                    </div>
+                </div>
+            </a>
+            <a class="game-card-link" href="games/who.html">
+                <div class="game-card">
+                    <div class="img-container">
+                        <img src="../img/game-who.png" alt="Game" class="game-img">
+                    </div>            
+                    <div class="game-card-footer">
+                        <span class="play-text">PLAY</span>
+                        <span class="game-container-title">¿Who is?</span>
+                    </div>
+                </div>
+            </a>
+            <a class="game-card-link" href="games/club.html">
+                <div class="game-card">
+                    <div class="img-container">
+                        <img src="../img/game-club.png" alt="Game" class="game-img">
+                    </div>            
+                    <div class="game-card-footer">
+                        <span class="play-text">PLAY</span>
+                        <span class="game-container-title">Club selection</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer-text">© 2025 Championdle. All rights reserved.</p>
+        <p class="footer-text">Developed by <a href="https://www.github.com/AlejoMFernandez" target="_blank">Alejo Fernandez</a></p>
+    </footer>
+
+    <script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('sw.js')
+            .then(res => console.log('SW registrado correctamente'))
+            .catch(err => console.log('SW no se pudo registrar', err));
+    }
+    </script>
+</body>
+</html>

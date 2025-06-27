@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Championdle 2025</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/views/index.css">
+    <link rel="stylesheet" href="css/partials/footer.css">
+    <link rel="stylesheet" href="css/partials/header.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" href="img/icon.png">
+</head>
+<body>
+  <div id="connection-toast" style="display:none;position:fixed;top:24px;right:24px;min-width:220px;max-width:90vw;padding:14px 28px;text-align:center;font-size:1.1rem;font-weight:bold;z-index:9999;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,0.15);transition:opacity 0.3s;"></div>
+  <header>
+      <h1 class="page-title"><strong>CHAMPIONS</strong><p>.dle</p></h1>
+  </header>
+  <nav>
+      <li><a href="#">Home</a></li>
+      <li><a href="html/games.html">Games</a></li>
+      <li><a href="html/list/team-List.html">List</a></li>
+      <li><a href="html/list/favorites.html">Favorites</a></li>
+  </nav>
+
+  <main>
+    <section class="intro">
+        <figure>
+          <img src="img/corona.png" alt="Trofeo Champions League" class="intro-img">
+        </figure>
+      <h2>Bienvenido a <h3 class="page-title"><strong>CHAMPIONS</strong><p>.dle</p></h></h2>
+      <p class="info">
+        Este sitio es una aplicación web progresiva (PWA) dedicada a los fanáticos del fútbol y la UEFA Champions League. Aquí podrás explorar información sobre los equipos y jugadores más destacados, jugar a adivinar futbolistas, y descubrir datos curiosos de la competencia más importante de Europa.
+      </p>
+      <ul>
+        <li>🔎 <strong>Explora equipos y jugadores:</strong> Accede a fichas detalladas y estadísticas.</li>
+        <li>🎮 <strong>Juega y aprende:</strong> Pon a prueba tus conocimientos con nuestro juego interactivo.</li>
+        <li>⭐ <strong>Tus favoritos:</strong> Marca jugadores o equipos que más te gusten (¡próximamente!).</li>
+        <li>📱 <strong>Instala la app:</strong> Disfruta la experiencia completa en tu dispositivo móvil.</li>
+        <li>🔔 <strong>Recibe notificaciones:</strong> Mantente informado sobre novedades y desafíos.</li>
+      </ul>
+      <p>
+        <strong>¡Sumate a la comunidad de Champions League GAMES y viví la pasión del fútbol europeo como nunca antes!</strong>
+      </p>
+      <button id="share-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
+          <path d="M 23 3 A 4 4 0 0 0 19 7 A 4 4 0 0 0 19.09375 7.8359375 L 10.011719 12.376953 A 4 4 0 0 0 7 11 A 4 4 0 0 0 3 15 A 4 4 0 0 0 7 19 A 4 4 0 0 0 10.013672 17.625 L 19.089844 22.164062 A 4 4 0 0 0 19 23 A 4 4 0 0 0 23 27 A 4 4 0 0 0 27 23 A 4 4 0 0 0 23 19 A 4 4 0 0 0 19.986328 20.375 L 10.910156 15.835938 A 4 4 0 0 0 11 15 A 4 4 0 0 0 10.90625 14.166016 L 19.988281 9.625 A 4 4 0 0 0 23 11 A 4 4 0 0 0 27 7 A 4 4 0 0 0 23 3 z"></path>
+        </svg>
+        <span id="share-tooltip" style="visibility:hidden;opacity:0;transition:opacity 0.2s;position:absolute;left:50%;top:-40px;transform:translateX(-90%);background:#23272b;color:#fff;padding:6px 16px;border-radius:6px;font-size:1rem;white-space:nowrap;z-index:10;">Compartir Champions.dle</span>
+      </button>
+    </section>
+  </main> 
+
+  <footer>
+      <p class="footer-text">© 2025 Championdle. All rights reserved.</p>
+      <p class="footer-text">Developed by <a href="https://www.github.com/AlejoMFernandez" target="_blank">Alejo Fernandez</a></p>
+  </footer>
+
+  <script>
+  if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+      .register('sw.js')
+      .then(res => console.log('SW registrado correctamente'))
+      .catch(err => console.log('SW no se pudo registrar', err));
+  }
+
+  // Notificación automática solo la primera vez
+  if ('Notification' in window) {
+    window.addEventListener('DOMContentLoaded', function() {
+      const bienvenidaMostrada = localStorage.getItem('bienvenidaMostrada');
+      if (Notification.permission === 'default') {
+        Notification.requestPermission().then(function(permission) {
+          if (permission === 'granted' && !bienvenidaMostrada) {
+            new Notification('¡Bienvenido a Champions.dle!', {
+              body: 'Gracias por visitar el sitio. ¡Disfruta la experiencia!',
+              icon: 'img/icon.png'
+            });
+            localStorage.setItem('bienvenidaMostrada', 'true');
+          }
+        });
+      }
+      if (Notification.permission === 'granted' && !bienvenidaMostrada) {
+        new Notification('¡Bienvenido a Champions.dle!', {
+          body: 'Gracias por visitar el sitio. ¡Disfruta la experiencia!',
+          icon: 'img/icon.png'
+        });
+        localStorage.setItem('bienvenidaMostrada', 'true');
+      }
+    });
+  }
+
+  // Web Share API para compartir el sitio y mostrar tooltip
+  document.addEventListener('DOMContentLoaded', function() {
+    var shareBtn = document.getElementById('share-btn');
+    var tooltip = document.getElementById('share-tooltip');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', function() {
+        if (navigator.share) {
+          navigator.share({
+            title: 'Champions.dle',
+            text: '¡Mirá este sitio de la Champions League! ⚽️',
+            url: 'https://championsdle.vercel.app/'
+          });
+        } else {
+          alert('La función de compartir no está disponible en este navegador.');
+        }
+      });
+      shareBtn.addEventListener('mouseenter', function() {
+        tooltip.style.visibility = 'visible';
+        tooltip.style.opacity = '1';
+      });
+      shareBtn.addEventListener('mouseleave', function() {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+      });
+    }
+
+    // Estado de conexión online/offline con toast
+    var connToast = document.getElementById('connection-toast');
+    function showConnectionToast(online) {
+      connToast.textContent = online ? 'Estás online' : 'Estás offline';
+      connToast.style.background = online ? '#1de9b6' : '#ff5252';
+      connToast.style.color = online ? '#23272b' : '#fff';
+      connToast.style.opacity = '1';
+      connToast.style.display = 'block';
+      clearTimeout(connToast._timeout);
+      connToast._timeout = setTimeout(() => {
+        connToast.style.opacity = '0';
+        setTimeout(() => { connToast.style.display = 'none'; }, 400);
+      }, 2000);
+    }
+    window.addEventListener('online', function() { showConnectionToast(true); });
+    window.addEventListener('offline', function() { showConnectionToast(false); });
+    // Mostrar estado inicial si está offline
+    if (!navigator.onLine) showConnectionToast(false);
+  });
+  </script>
+  <script src="test.js"></script>
+</body>
+</html>

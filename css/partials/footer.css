@@ -1,0 +1,13 @@
+footer{
+    background-color: var(--color-surface);
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #6c757d;
+    position: static;
+    bottom: 0;
+}
+
+footer p a{
+    text-decoration: none;
+}

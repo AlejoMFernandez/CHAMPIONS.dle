@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Adivina el Jugador</title>
+    <link rel="stylesheet" href="../../css/views/games/who.css">
+    <link rel="stylesheet" href="../../css/views/games/guess.css">
+    <link rel="stylesheet" href="../../css/partials/footer.css">
+    <link rel="stylesheet" href="../../css/partials/header.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="manifest" href="../../manifest.json">
+</head>
+<body>
+    <header>
+        <h1 class="page-title"><strong>CHAMPIONS</strong><p>.dle</p></h1>
+    </header>
+    <nav>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../games.html">Games</a></li>
+        <li><a href="../list/team-List.html">List</a></li>
+        <li><a href="../list/favorites.html">Favorites</a></li>
+    </nav>
+
+    <main>
+        <h2 class="game-title">Who is the footballer</h2>
+        <div class="guess-container">
+            <div class="player-img-container">
+                <img id="player-img" src="" alt="Jugador">
+            </div>
+            <div id="options-container" class="options-container"></div>
+            <div id="result"></div>
+            <button id="restart-btn" style="display:none;">Volver a jugar</button>
+        </div>
+    </main>
+
+    <footer>
+        <p class="footer-text">© 2025 Championdle. All rights reserved.</p>
+        <p class="footer-text">Developed by <a href="https://www.github.com/AlejoMFernandez" target="_blank">Alejo Fernandez</a></p>
+    </footer>
+
+    <script src="../../js/who.js"></script>
+</body>
+</html>
