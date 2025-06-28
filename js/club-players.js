@@ -4,6 +4,8 @@ let selectedClub = null;
 let correctPlayers = [];
 let options = [];
 let selectedIndexes = [];
+let streak = 0;
+let bestStreak = parseInt(localStorage.getItem('clubBestStreak')) || 0;
 
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -44,6 +46,34 @@ function getRandomOptions(correctPlayers, allPlayers) {
     return { options, correct };
 }
 
+function updateStreakDisplay(bounceCurrent = false, bounceBest = false) {
+    let streakDiv = document.getElementById('streak-info');
+    const main = document.querySelector('main');
+    // Usar el contenedor correcto según el HTML
+    const clubContainer = document.querySelector('.guess-container');
+    if (!streakDiv) {
+        streakDiv = document.createElement('div');
+        streakDiv.id = 'streak-info';
+        streakDiv.className = 'streak-info';
+    }
+    // Siempre lo movemos arriba de .guess-container
+    main.insertBefore(streakDiv, clubContainer);
+    streakDiv.innerHTML = `
+      <span class="streak-current${bounceCurrent ? ' streak-bounce' : ''}">🔥 ${streak}</span>
+      <span class="streak-best${bounceBest ? ' streak-bounce' : ''}">🏆 ${bestStreak}</span>
+    `;
+    if (bounceCurrent) {
+      setTimeout(() => {
+        streakDiv.querySelector('.streak-current').classList.remove('streak-bounce');
+      }, 500);
+    }
+    if (bounceBest) {
+      setTimeout(() => {
+        streakDiv.querySelector('.streak-best').classList.remove('streak-bounce');
+      }, 500);
+    }
+}
+
 function renderRound() {
     document.getElementById('result').textContent = '';
     document.getElementById('restart-btn').style.display = 'none';
@@ -82,6 +112,7 @@ function renderRound() {
 
     // Botón enviar
     document.getElementById('submit-btn').onclick = () => checkAnswers(correctIds);
+    updateStreakDisplay();
 }
 
 function toggleSelect(idx, div) {
@@ -122,10 +153,20 @@ function checkAnswers(correctIds) {
     let msg = '';
     if (aciertos > 0 && errores === 0 && faltaron === 0) {
         msg = '¡Correcto! Seleccionaste todos los jugadores del club.';
+        streak++;
+        let bounceBest = false;
+        if (streak > bestStreak) {
+            bestStreak = streak;
+            localStorage.setItem('clubBestStreak', bestStreak);
+            bounceBest = true;
+        }
+        updateStreakDisplay(true, bounceBest);
     } else {
         msg = 'Incorrecto. ';
         if (errores > 0) msg += `Marcaste ${errores} que no pertenecen. `;
         if (faltaron > 0) msg += `Te faltaron ${faltaron} jugadores.`;
+        streak = 0;
+        updateStreakDisplay(true, false);
     }
     document.getElementById('result').textContent = msg;
     document.getElementById('restart-btn').style.display = 'block';

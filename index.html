@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Championdle 2025</title>
+    <title>CHAMPIONS.dle - 2025</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/views/index.css">
     <link rel="stylesheet" href="css/partials/footer.css">
@@ -12,15 +12,15 @@
     <link rel="icon" type="image/png" href="img/icon.png">
 </head>
 <body>
-  <div id="connection-toast" style="display:none;position:fixed;top:24px;right:24px;min-width:220px;max-width:90vw;padding:14px 28px;text-align:center;font-size:1.1rem;font-weight:bold;z-index:9999;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,0.15);transition:opacity 0.3s;"></div>
+  <div id="connection-toast" style="display:block;position:fixed;top:20px;right:20px;padding:14px 28px;text-align:center;font-size:1.1rem;font-weight:bold;z-index:9999;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,0.15);transition:opacity 0.3s;"></div>
   <header>
       <h1 class="page-title"><strong>CHAMPIONS</strong><p>.dle</p></h1>
   </header>
   <nav>
-      <li><a href="#">Home</a></li>
-      <li><a href="html/games.html">Games</a></li>
-      <li><a href="html/list/team-List.html">List</a></li>
-      <li><a href="html/list/favorites.html">Favorites</a></li>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="html/games.html">Juegos</a></li>
+      <li><a href="html/list/team-List.html">Lista</a></li>
+      <li><a href="html/list/favorites.html">Favoritos</a></li>
   </nav>
 
   <main>
@@ -118,7 +118,7 @@
     // Estado de conexión online/offline con toast
     var connToast = document.getElementById('connection-toast');
     function showConnectionToast(online) {
-      connToast.textContent = online ? 'Estás online' : 'Estás offline';
+      connToast.textContent = online ? 'ONLINE' : 'OFFLINE';
       connToast.style.background = online ? '#1de9b6' : '#ff5252';
       connToast.style.color = online ? '#23272b' : '#fff';
       connToast.style.opacity = '1';
@@ -135,6 +135,5 @@
     if (!navigator.onLine) showConnectionToast(false);
   });
   </script>
-  <script src="test.js"></script>
 </body>
 </html>

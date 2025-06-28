@@ -1,3 +1,16 @@
+body{
+    background: #12202a !important;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.guess-container {
+    border-bottom-left-radius: 18px !important;
+    border-bottom-right-radius: 18px !important;
+    border-top-left-radius: 0px !important; 
+    border-top-right-radius: 0px !important;
+}
+
 .options-container {
     display: flex;
     flex-direction: column;
@@ -32,3 +45,4 @@
     opacity: 0.8;
     cursor: default;
 }
+

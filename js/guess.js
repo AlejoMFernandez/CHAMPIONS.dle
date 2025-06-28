@@ -4,6 +4,8 @@ let suggestionIndex = -1;
 let lives = 3;
 let clearResultTimeout = null;
 let flagsData = [];
+let streak = 0;
+let bestStreak = parseInt(localStorage.getItem('guessBestStreak')) || 0;
 
 function renderLives() {
     const livesContainer = document.getElementById('lives-container');
@@ -35,6 +37,7 @@ function resetGame() {
     document.getElementById('guess-input').focus();
     suggestionIndex = -1;
     if (clearResultTimeout) clearTimeout(clearResultTimeout);
+    // La racha solo se resetea si perdiste (lives == 0), no aquí
 }
 
 function normalize(str) {
@@ -134,6 +137,31 @@ function selectSuggestion() {
     }
 }
 
+function updateStreakDisplay(bounceCurrent = false, bounceBest = false) {
+    let streakDiv = document.getElementById('streak-info');
+    if (!streakDiv) {
+        streakDiv = document.createElement('div');
+        streakDiv.id = 'streak-info';
+        streakDiv.className = 'streak-info';
+        document.querySelector('main').insertBefore(streakDiv, document.querySelector('.guess-container'));
+    }
+    streakDiv.innerHTML = `
+      <span class="streak-current${bounceCurrent ? ' streak-bounce' : ''}">🔥 ${streak}</span>
+      <span class="streak-best${bounceBest ? ' streak-bounce' : ''}">🏆 ${bestStreak}</span>
+    `;
+    if (bounceCurrent) {
+      setTimeout(() => {
+        streakDiv.querySelector('.streak-current').classList.remove('streak-bounce');
+      }, 500);
+    }
+    if (bounceBest) {
+      setTimeout(() => {
+        streakDiv.querySelector('.streak-best').classList.remove('streak-bounce');
+      }, 500);
+    }
+}
+
+// En checkGuess, actualiza la racha
 function checkGuess() {
     const guessInput = document.getElementById('guess-input');
     const guess = normalize(guessInput.value.trim());
@@ -146,6 +174,14 @@ function checkGuess() {
         document.getElementById('restart-btn').style.display = 'block';
         guessInput.disabled = true;
         document.getElementById('guess-btn').disabled = true;
+        streak++;
+        let bounceBest = false;
+        if (streak > bestStreak) {
+            bestStreak = streak;
+            localStorage.setItem('guessBestStreak', bestStreak);
+            bounceBest = true;
+        }
+        updateStreakDisplay(true, bounceBest);
     } else {
         lives--;
         renderLives();
@@ -164,6 +200,7 @@ function checkGuess() {
                 document.getElementById('guess-btn').disabled = false;
                 guessInput.focus();
             }, 1200);
+            // NO se resetea la racha aquí
         } else {
             document.getElementById('player-img').classList.remove('blurred');
             result.innerHTML = `¡Perdiste! El jugador era <b>${selectedPlayer.name}</b>.`;
@@ -171,6 +208,8 @@ function checkGuess() {
             document.getElementById('restart-btn').style.display = 'block';
             guessInput.disabled = true;
             document.getElementById('guess-btn').disabled = true;
+            streak = 0;
+            updateStreakDisplay(true, false);
         }
     }
 }
@@ -184,6 +223,7 @@ Promise.all([
     selectedPlayer = pickRandomPlayer(allPlayers);
     showPlayerInfo(selectedPlayer);
     renderLives();
+    updateStreakDisplay();
 
     document.getElementById('guess-input').addEventListener('input', (e) => {
         showSuggestions(e.target.value);

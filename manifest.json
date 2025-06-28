@@ -2,7 +2,7 @@
     "theme_color": "#18191a",
     "background_color": "#18191a",
     "display": "fullscreen",
-    "scope": "/FernandezAlejo-ParcialN1/",
+    "scope": "/",
     "start_url": "index.html",
     "name": "Champions League APP",
     "short_name": "CL App",
