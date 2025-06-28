@@ -58,3 +58,14 @@
     width: 80px;
     height: 80px;
 }
+
+@media (max-width: 600px) {
+  #team-list {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas: none;
+  }
+  .teamlist-item {
+    grid-area: unset !important;
+  }
+}

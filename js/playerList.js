@@ -15,7 +15,7 @@ fetch('../../teams.json')
         const team = teams.find(t => t.shortName === teamId || t.name === teamId);
 
         if (team) {
-            document.title = team.shortName + ' - Player list'; // Cambia el título de la pestaña
+            document.title = team.shortName + ' - Lista de jugadores'; // Cambia el título de la pestaña
             // Mostrar nombre y logo
             const teamHeader = document.createElement("div");
             teamHeader.className = "team-header";

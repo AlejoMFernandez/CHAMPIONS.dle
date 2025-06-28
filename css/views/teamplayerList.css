@@ -7,9 +7,6 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-body {
-    background: #18191a;
-}
 
 #player-list{
     display: flex;
