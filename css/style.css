@@ -85,3 +85,14 @@ main{
     background: #23272b;
 }
 
+@media (max-width: 600px) {
+    .guess-container{
+        max-width: 350px !important;
+        padding: 15px 20px !important;
+    }
+    .streak-info{
+        max-width: 370px !important;
+    }
+}
+
+
